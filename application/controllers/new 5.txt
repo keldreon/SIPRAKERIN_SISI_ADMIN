@@ -1,0 +1,80 @@
+<body class="index-page sidebar-collapse">
+  <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="<?php echo site_url('Home/index/');?>">Sistem Informasi Prakerin SMK</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="<?php echo site_url('CekStatus/index/');?>" class="nav-link">Cek Status Penerimaan</a>	                        
+          </li>
+		  <li class="nav-item">
+			<a href="<?php echo site_url('PantauSiswa/index/');?>" class="nav-link">Cek Aktivitas Siswa</a>
+		  </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/bg3.jpg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">          
+            <h1 class="title">Beranda</h1>
+            <h4>Deskripsi</h4>          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main main-raised">
+    <div class="container">
+      <div class="section text-center">
+        <h2 class="title">Lab yang bisa diajukan.</h2>
+      </div>
+	  <div class="row mb-2"> 
+	  <?php foreach($laboratorium->result() as $lab):?>
+        <div class="col-md-6">
+          <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+              <strong class="d-inline-block mb-1 text-primary">Laboratorium</strong>
+              <h3 class="mb-1">
+                <?php echo $lab->nama_lab; ?>
+              </h3>
+              <div class="mb-1 text-muted">Terisi : <?php echo $lab->kapasitas_isi; ?> / <?php echo $lab->kapasitas_maksimum; ?></div>			 
+              <p class="card-text mb-auto"><?php echo $lab->desk_lab; ?></p>
+              <a href="<?php echo site_url('Home/klikLab/' .$lab->id_lab);?>" >Ajukan</a>
+			  <a href="<?php //echo site_url('Pengajuan/index/' .$lab->id_lab);?>" >Detail Pengajuan (?)</a>
+            </div>
+            
+          </div>
+        </div>
+	  <?php endforeach?>
+      </div>
+    </div>
+	<br/>
+  </div>
+  <footer class="footer footer-default">
+    <div class="container">
+      <nav class="float-left">
+        <ul>
+          <li>
+            <a href="https://www.creative-tim.com/">
+              Template by Creative Tim
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>        
+      </div>
+    </div>
+  </footer>
